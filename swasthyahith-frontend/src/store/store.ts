@@ -1,4 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
+import { stat } from 'fs';
 
 const loadState = () => {
     try {
@@ -24,15 +25,18 @@ const authSlice = createSlice({
     initialState: {
         id: null,
         role: null,
+        jwt: null,
     },
     reducers: {
         setUser: (state, action) => {
             state.id = action.payload.id;
             state.role = action.payload.role;
+            state.jwt = action.payload.jwt;
         },
         clearUser: (state) => {
             state.id = null;
             state.role = null;
+            state.jwt = null;
         },
     },
 });

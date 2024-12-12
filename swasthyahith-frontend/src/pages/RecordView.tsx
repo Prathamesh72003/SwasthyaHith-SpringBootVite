@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
-import { useLocalState } from "@/util/useLocalStorage";
+// import { useLocalState } from "@/util/useLocalStorage";
 import axios from "axios";
 
 function RecordView() {
     const recordId = window.location.pathname.split("/")[2];
     const [record, setRecord] = useState<any>(null);
 
-    const[jwt, setJwt] = useLocalState("", "jwt");
+    // const[jwt, setJwt] = useLocalState("", "jwt");
 
     useEffect(() => {
         try {   
             axios.get("http://localhost:8080/api/records/"+recordId,{
                 headers:{
                     "Content-Type": "application/json",
-                    "Authorization": "Bearer "+jwt
+                    // "Authorization": "Bearer "+jwt
                 }
             }).then((res)=>{
                 if (res.status === 200) {

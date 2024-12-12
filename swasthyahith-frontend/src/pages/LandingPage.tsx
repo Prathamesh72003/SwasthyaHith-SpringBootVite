@@ -7,15 +7,21 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useNavigate } from 'react-router-dom'
 
 export default function LandingPage() {
-  const [isSignInOpen, setIsSignInOpen] = useState(false)
   const [isSignUpOpen, setIsSignUpOpen] = useState(false)
 
+  const navigate = useNavigate();
+
+  function handleSignin(): void {
+    navigate("/login");
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#010048] to-[#010048]/70">
+    <div className="min-h-screen bg-gradient-to-br from-[#0e0d29] to-[#010048]/70">
       <nav className="px-14 py-8 flex justify-between items-center">
-        <div className="text-white text-2xl font-bold">SwasthyaHith</div>
+        <div className="text-white text-3xl font-bold">SwasthyaHith</div>
         <div className="hidden md:flex items-center space-x-8">
           <a href="#" className="text-gray-300 hover:text-white transition-colors">About</a>
           <a href="#" className="text-gray-300 hover:text-white transition-colors">Products</a>
@@ -23,30 +29,16 @@ export default function LandingPage() {
           <a href="#" className="text-gray-300 hover:text-white transition-colors">Support</a>
         </div>
         <div className="flex items-center space-x-4">
-          <DropdownMenu open={isSignInOpen} onOpenChange={setIsSignInOpen}>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="text-white hover:text-white hover:bg-white/10">
-                Sign In <ChevronDown className="ml-2 h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 bg-[#010048] border border-white/10">
-              <DropdownMenuItem onClick={() => console.log('Doctor Sign In')}>
-                <Stethoscope className="mr-2 h-4 w-4" />
-                <span>Sign In as Doctor</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => console.log('Patient Sign In')}>
-                <Shield className="mr-2 h-4 w-4" />
-                <span>Sign In as Patient</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Button onClick={() => handleSignin()} variant="ghost" className="text-white hover:text-white hover:bg-white/10">
+            Sign In
+          </Button>
           <DropdownMenu open={isSignUpOpen} onOpenChange={setIsSignUpOpen}>
             <DropdownMenuTrigger asChild>
               <Button className="bg-white text-[#010048] hover:bg-white/90">
                 Sign Up <ChevronDown className="ml-2 h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 bg-[#010048] border border-white/10">
+            <DropdownMenuContent className="w-56 bg-[#010048] border border-white/10 text-white">
               <DropdownMenuItem onClick={() => console.log('Doctor Sign Up')}>
                 <Stethoscope className="mr-2 h-4 w-4" />
                 <span>Sign Up as Doctor</span>
@@ -60,7 +52,6 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      {/* Hero Section */}
       <main className="container mx-auto px-6 pt-20 pb-32 text-center">
         <div className="inline-flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-8">
           <svg className="w-4 h-4 text-blue-400 mr-2" viewBox="0 0 24 24" fill="currentColor">
@@ -70,7 +61,9 @@ export default function LandingPage() {
         </div>
 
         <h1 className="text-5xl md:text-6xl font-bold mb-6">
-          Revolutionize Your
+          <span className="gradient-text">
+            Revolutionize Your
+          </span>
           <br />
           <span className="bg-gradient-to-r from-blue-400 to-purple-400 text-transparent bg-clip-text">
             Healthcare Experience

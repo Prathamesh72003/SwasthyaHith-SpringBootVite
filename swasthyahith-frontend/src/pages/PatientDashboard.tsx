@@ -1,19 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { clearUser } from "@/store/store";
-import { useLocalState } from "@/util/useLocalStorage";
+// import { useLocalState } from "@/util/useLocalStorage";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 
 function PatientDashboard(){
 
-    const [jwt, setJwt] = useLocalState("", "jwt");
+    // const [jwt, setJwt] = useLocalState("", "jwt");
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
     const logOut = () => {
-        setJwt("");
+        // setJwt("");
         dispatch(clearUser());
         localStorage.clear();
         navigate("/login");

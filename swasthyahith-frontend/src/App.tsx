@@ -17,7 +17,7 @@ function App() {
 
         {!role && <Route path="*" element={<Navigate to="/" />} />}
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<Login />} />
+        {!role && <Route path="/login" element={<Login />} />}
 
         {role == "ROLE_PATIENT" && <Route path="/dashboard" element={<PrivateRoute><PatientDashboard /></PrivateRoute>}/>}
         {role == "ROLE_DOCTOR" && <Route path="/dashboard" element={<PrivateRoute><DoctorDashboard /></PrivateRoute>}/>}
