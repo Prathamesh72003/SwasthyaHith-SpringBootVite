@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { ReactNode } from "react";
-import { useSelector, UseSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 
 function PrivateRoute({ children }: { children: ReactNode }) {

@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import PatientDashboard from "./pages/PatientDashboard";
 import DoctorDashboard from "./pages/DoctorDashboard";
 import LandingPage from "./pages/LandingPage";
+import SignUpPage from "./pages/SignUpPage";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         {!role && <Route path="*" element={<Navigate to="/" />} />}
         <Route path="/" element={<LandingPage />} />
         {!role && <Route path="/login" element={<Login />} />}
+        {!role && <Route path="/signup" element={<SignUpPage />} />}
 
         {role == "ROLE_PATIENT" && <Route path="/dashboard" element={<PrivateRoute><PatientDashboard /></PrivateRoute>}/>}
         {role == "ROLE_DOCTOR" && <Route path="/dashboard" element={<PrivateRoute><DoctorDashboard /></PrivateRoute>}/>}

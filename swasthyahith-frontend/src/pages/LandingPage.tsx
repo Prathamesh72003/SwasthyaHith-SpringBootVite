@@ -1,21 +1,17 @@
-import { useState } from 'react'
 import { Button } from "@/components/ui/button"
-import { Shield, Stethoscope, History, ChevronDown } from 'lucide-react'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { Shield, Stethoscope, History } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 export default function LandingPage() {
-  const [isSignUpOpen, setIsSignUpOpen] = useState(false)
 
   const navigate = useNavigate();
 
   function handleSignin(): void {
     navigate("/login");
+  }
+  
+  function handleSignup(): void {
+    navigate("/signup");
   }
 
   return (
@@ -32,23 +28,9 @@ export default function LandingPage() {
           <Button onClick={() => handleSignin()} variant="ghost" className="text-white hover:text-white hover:bg-white/10">
             Sign In
           </Button>
-          <DropdownMenu open={isSignUpOpen} onOpenChange={setIsSignUpOpen}>
-            <DropdownMenuTrigger asChild>
-              <Button className="bg-white text-[#010048] hover:bg-white/90">
-                Sign Up <ChevronDown className="ml-2 h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56 bg-[#010048] border border-white/10 text-white">
-              <DropdownMenuItem onClick={() => console.log('Doctor Sign Up')}>
-                <Stethoscope className="mr-2 h-4 w-4" />
-                <span>Sign Up as Doctor</span>
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => console.log('Patient Sign Up')}>
-                <Shield className="mr-2 h-4 w-4" />
-                <span>Sign Up as Patient</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Button onClick={() => handleSignup()} className="bg-white text-[#010048] hover:bg-white/90">
+            Sign Up
+          </Button>
         </div>
       </nav>
 

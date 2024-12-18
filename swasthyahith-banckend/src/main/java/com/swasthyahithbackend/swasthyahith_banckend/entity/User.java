@@ -36,6 +36,8 @@ public class User implements UserDetails {
     private String email;
     private String password;
     private String phone;
+    @Column(name = "registration_number")
+    private String registrationNumber;
     @Column(name = "registered_at")
     private Date registerdAt;
 

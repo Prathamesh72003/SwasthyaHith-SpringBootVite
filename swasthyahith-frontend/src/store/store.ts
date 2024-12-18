@@ -1,5 +1,4 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit';
-import { stat } from 'fs';
 
 const loadState = () => {
     try {
